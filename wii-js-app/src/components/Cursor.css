@@ -1,0 +1,9 @@
+.Cursor {
+  width: 20px;
+  height: 20px;
+  background-color: blue; /* Placeholder style */
+  border-radius: 50%;
+  position: absolute; /* Crucial for positioning with left/top */
+  pointer-events: none; /* So the cursor doesn't block mouse events on elements underneath */
+  /* transform: translate(-50%, -50%); /* Optional: to center cursor on mouse tip */
+}

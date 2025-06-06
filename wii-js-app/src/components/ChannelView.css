@@ -1,0 +1,10 @@
+.ChannelView {
+  width: 80%;
+  height: 70%;
+  background-color: #dddddd;
+  border: 1px dashed #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}

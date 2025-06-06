@@ -16,13 +16,25 @@ function ChannelBox({ id, name, onSelect }) {
     }
   };
 
+  let iconElement = null;
+  if (name === "Mii Channel") {
+    // Using a span inside .icon-mii for the more complex Mii icon if needed later,
+    // but current CSS is simplified for a single div.
+    iconElement = <div className="channel-icon icon-mii"></div>;
+  } else if (name === "Photo Channel") {
+    iconElement = <div className="channel-icon icon-photo"></div>;
+  } else {
+    // Default placeholder for other channels
+    iconElement = <div className="channel-icon icon-default"></div>;
+  }
+
   return (
     <div
-      // Optionally, use isLocallySelected for styling if parent doesn't manage selection state visually
       className={`ChannelBox ${isLocallySelected ? 'selected' : ''}`}
       onClick={handleClick}
     >
-      {name}
+      {iconElement}
+      <div className="channel-name">{name}</div>
     </div>
   );
 }

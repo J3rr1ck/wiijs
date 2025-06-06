@@ -1,13 +1,10 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f0f0; /* A light grey background, different from default App.js dark */
-}
+/*
+  Global body styles (font, margin, background) are now primarily handled in index.css
+  to avoid duplication and ensure a single source of truth.
+*/
 
 .App {
-  /* text-align: center; Remove default centering for App if WiiMenu handles its own layout */
+  /* text-align: center; /* This was the default CRA style. Removed as layout is handled by components. */
+  /* Add any specific .App container styles here if needed, for example, to constrain width or center the app on a larger screen. */
+  /* For now, WiiMenu takes full width/height, so .App doesn't need much. */
 }

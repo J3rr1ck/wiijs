@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center; /* Center content vertically and horizontally */
   box-sizing: border-box;
-  font-family: Arial, sans-serif; /* Should inherit from index.css ideally */
+  /* font-family is inherited from index.css body */
   overflow-y: auto; /* In case content ever overflows on smaller screens */
 }
 

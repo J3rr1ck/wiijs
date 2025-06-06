@@ -1,48 +1,63 @@
 .MiiChannelView {
-  padding: 20px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.85); /* Similar to ChannelBox but could be distinct */
-  border-radius: 10px;
-  margin: 20px;
-  color: #333;
-  font-family: Arial, sans-serif;
-  height: calc(100vh - 100px); /* Example height, assuming SystemBar is present */
+  width: 100%;
+  /* Assuming WiiMenu provides the context for height (e.g., it's a flex child or has explicit height) */
+  /* For now, let's ensure it fills available vertical space if WiiMenu is flex container */
+  flex-grow: 1;
+  /* Or, if WiiMenu isn't flex, a specific height like:
+     height: calc(100vh - 40px); /* Assuming 40px is SystemBar height */
+  */
+  background-color: #d0e8f0; /* Cheerful, light sky blue */
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center; /* Center content vertically and horizontally */
   box-sizing: border-box;
+  font-family: Arial, sans-serif; /* Should inherit from index.css ideally */
+  overflow-y: auto; /* In case content ever overflows on smaller screens */
 }
 
-.MiiChannelView h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: #007bff; /* Wii-like blue for titles */
+.mii-channel-title {
+  font-size: 2.2em; /* Larger title */
+  color: #003366; /* Darker, slightly desaturated blue */
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.5); /* Subtle white highlight */
 }
 
-.MiiChannelView p {
-  font-size: 1.2em;
-  margin-bottom: 30px;
+.mii-channel-message {
+  font-size: 1.1em; /* Standard readable size */
+  color: #334455; /* Dark grey-blue */
+  margin-bottom: 40px; /* More space before the button */
+  max-width: 500px; /* Prevent message from being too wide */
+  text-align: center;
+  line-height: 1.6;
 }
 
 .mii-back-button {
-  padding: 10px 20px;
+  padding: 10px 25px; /* Adjusted padding */
   font-size: 1em;
-  color: white;
-  background-color: #007bff; /* Blue button */
-  border: none;
-  border-radius: 20px; /* Rounded button */
+  font-weight: bold;
+  color: #333; /* Dark text for light button */
+  background-image: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+  border: 1px solid #b0b0b0;
+  border-radius: 12px; /* Squircle shape */
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.5);
+  transition: all 0.15s ease-in-out;
 }
 
 .mii-back-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-1px); /* Slight lift on hover */
+  background-image: linear-gradient(to bottom, #ffffff, #e8e8e8);
+  border-color: #a0a0a0;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.6);
+  transform: translateY(-1px); /* Slight lift */
 }
 
 .mii-back-button:active {
-  transform: translateY(0px); /* Button press effect */
-  background-color: #004085;
+  background-image: linear-gradient(to top, #f0f0f0, #d8d8d8); /* Inverted gradient for press */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  transform: translateY(0px);
+  text-shadow: none;
 }

@@ -1,46 +1,48 @@
 /*
+/*
   Ideal solution: Use an SVG or PNG image asset for the Wii hand pointer for visual accuracy.
   e.g., background-image: url('/path/to/wii-hand-pointer.svg');
+
+  The below styles are for the inline SVG cursor implemented in Cursor.js.
 */
-.Cursor {
-  width: 30px; /* Approximate width of the Wii hand pointer */
-  height: 45px; /* Approximate height of the Wii hand pointer */
+
+.CursorSVG {
   position: absolute;
   pointer-events: none; /* Allows clicks/hovers to pass through */
   z-index: 1000; /* Ensure it's above other UI elements */
-  /* The following is an attempt at a CSS-only Wii hand pointer */
-  background-color: white;
-  border: 2px solid #333; /* Dark border */
-  border-radius: 15px 15px 5px 5px / 20px 20px 5px 5px; /* Rounded top, flatter bottom for palm */
-  transform-origin: bottom center; /* Helps if we were to add pointing animation */
+  /* Applying a CSS drop shadow for the blueish Wii pointer glow/outline */
+  /* This is often more flexible than SVG filters embedded in the SVG string */
+  filter: drop-shadow(0px 0px 1.5px rgba(50, 150, 255, 0.7))
+          drop-shadow(0px 0px 3px rgba(50, 150, 255, 0.5));
+  /* Optional: if you want a slight offset shadow too, add another drop-shadow()
+     drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2)) */
+
+  /* The old CSS-only cursor styles are removed or commented out. */
 }
 
-/* Simulating the pointing finger part of the hand */
+/*
+.Cursor {
+  width: 30px;
+  height: 45px;
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+  background-color: white;
+  border: 2px solid #333;
+  border-radius: 15px 15px 5px 5px / 20px 20px 5px 5px;
+  transform-origin: bottom center;
+}
+
 .Cursor::before {
   content: '';
   position: absolute;
-  width: 10px; /* Finger width */
-  height: 20px; /* Finger length */
+  width: 10px;
+  height: 20px;
   background-color: white;
   border: 2px solid #333;
-  border-bottom: none; /* Finger is open at the bottom where it connects to palm */
-  border-radius: 10px 10px 0 0; /* Rounded fingertip */
-  top: -18px; /* Position above the palm */
-  left: 50%;
-  transform: translateX(-50%); /* Center the finger */
-}
-
-/* Optional: A small blue circle at the base, like some Wii pointer versions */
-/* This is tricky to get right with the main shape and might be better as part of an image */
-/*
-.Cursor::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #007bff;
-  border-radius: 50%;
-  bottom: 5px;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  top: -18px;
   left: 50%;
   transform: translateX(-50%);
 }

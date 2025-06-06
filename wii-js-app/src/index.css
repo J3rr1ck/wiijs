@@ -1,11 +1,33 @@
+html {
+  box-sizing: border-box; /* Apply border-box to html */
+  font-size: 16px; /* Base font size for rem units */
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0; /* Ensure no default padding */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #333; /* Default text color */
+  background-color: #f0f0f0; /* Default body background, often overridden by app container */
+  line-height: 1.5; /* Default line height for readability */
 }
+
+*, *::before, *::after {
+  box-sizing: inherit; /* All elements inherit border-box from html */
+}
+
+/* Remove default margin from common elements (optional, can be more specific) */
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure {
+  margin: 0 0 1rem 0; /* Default bottom margin for flow content, remove others */
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none; /* Remove default list styles */
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

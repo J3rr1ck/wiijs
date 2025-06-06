@@ -1,35 +1,173 @@
 .ChannelBox {
-  width: 130px; /* Approximate size for a channel box */
-  height: 90px; /* Approximate size for a channel box */
-  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-  border-radius: 10px; /* Rounded corners */
-  padding: 10px;
+  width: 135px; /* Slightly wider */
+  height: 100px; /* Slightly taller */
+  background-color: #f0f0f0; /* Base color if gradient is transparent */
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.5) 40%, rgba(230,230,230,0.5) 100%);
+  border-radius: 8px; /* Refined rounded corners */
+  padding: 8px;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack icon and name vertically */
+  justify-content: center; /* Center content vertically */
   align-items: center;
   text-align: center;
   font-family: Arial, sans-serif;
   color: #333;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer; /* Indicate it's clickable */
-  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out; /* Smoother transition */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255,255,255,0.3); /* Outer shadow and subtle inner top highlight */
+  cursor: pointer;
+  transition: all 0.15s ease-in-out; /* Universal transition */
+  position: relative; /* For potential absolute positioning of icon elements if needed */
+}
+
+.channel-name {
+  font-size: 13px; /* Adjusted font size */
+  font-weight: bold;
+  color: #222; /* Darker text */
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7); /* Subtle highlight for readability */
+  margin-top: 8px; /* Space between icon and name */
 }
 
 .ChannelBox:hover {
-  transform: scale(1.08); /* Slightly more pronounced hover scale */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* More pronounced shadow on hover */
+  transform: scale(1.08);
+  border-color: rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 40%, rgba(240,240,240,0.8) 100%); /* Brighter on hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255,255,255,0.4);
 }
 
 .ChannelBox.selected {
-  background-color: rgba(230, 230, 250, 0.85); /* Slightly different background, e.g., a light lavender tint */
-  border-color: #007bff; /* Blue border to indicate selection, similar to some UI elements */
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inset shadow to look "pressed" */
-  transform: scale(1.02); /* Slightly smaller than hover, but still selected */
+  transform: scale(1.05); /* Slightly larger when selected */
+  border-color: #007bff; /* Clear blue border for selection */
+  background-image: linear-gradient(to bottom, rgba(220,235,255,0.9) 0%, rgba(200,225,255,0.7) 50%, rgba(180,210,240,0.7) 100%); /* Bluish tint for selected */
+  box-shadow: 0 2px 5px rgba(0,123,255,0.3), inset 0 1px 2px rgba(0,0,0,0.1); /* Blue glow and inset shadow */
+  color: #004085; /* Darker blue text when selected */
+}
+
+.ChannelBox.selected .channel-name {
+  color: #003366; /* Even darker blue for selected channel name */
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 /* Ensure hover on a selected item is still visually distinct or maintains selection emphasis */
 .ChannelBox.selected:hover {
-  transform: scale(1.05); /* Keep it slightly larger than base selected, but less than normal hover */
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2); /* Combine inset and outset shadow */
+  transform: scale(1.1); /* Slightly more pronounced hover for selected */
+  border-color: #0056b3; /* Darker blue border on hover-selected */
+  box-shadow: 0 6px 12px rgba(0,123,255,0.4), inset 0 1px 2px rgba(0,0,0,0.15);
 }
+
+/* Generic icon styling */
+.channel-icon {
+  width: 50px; /* Example fixed size for icon area */
+  height: 40px; /* Example fixed size for icon area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(0,0,0,0.05); */ /* Optional: slight background for icon area */
+  /* border-radius: 4px; */
+  margin-bottom: 5px; /* Space below icon before name */
+}
+
+/* Placeholder for default icon if needed */
+.icon-default {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+.icon-default::after {
+  content: "?";
+  font-size: 20px;
+  color: #888;
+}
+
+
+/* Mii Icon: Three circles */
+.icon-mii {
+  display: flex;
+  justify-content: space-around; /* Evenly space the heads */
+  align-items: flex-end; /* Align heads to the bottom of the container */
+  width: 100%;
+}
+
+.icon-mii::before, .icon-mii::after, .icon-mii span {
+  content: ""; /* Necessary for ::before and ::after if not using span for middle */
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: #d3e6f5; /* Light blueish grey, common Mii color */
+  border-radius: 50%;
+  border: 1px solid #8badda; /* Mii blue border */
+  position: relative;
+}
+.icon-mii::before {
+  /* left Mii slightly smaller and behind */
+  width: 14px; height: 14px; opacity: 0.8; z-index: 0; margin-bottom: 2px;
+}
+.icon-mii::after {
+  /* right Mii slightly smaller and behind */
+  width: 14px; height: 14px; opacity: 0.8; z-index: 0; margin-bottom: 2px;
+}
+/* We need a real element for the middle one for proper flex spacing, or complex positioning */
+/* For simplicity, let's assume .icon-mii itself is the main one and pseudo-elements are side ones.
+   This is hard to do with just one div and two pseudo-elements for three items in flex.
+   Alternative: .icon-mii contains three spans. For now, let's try to fake two with one central div */
+
+.icon-mii { /* Re-style for a single Mii head for now, simpler with one div */
+  width: 25px;
+  height: 25px;
+  background-color: #d3e6f5;
+  border-radius: 50% 50% 45% 45%; /* Slightly egg-shaped head */
+  border: 1px solid #8badda;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+/* Eyes - these would be better as nested divs or SVG for precision */
+.icon-mii::before {
+  content: '';
+  position: absolute;
+  width: 5px; height: 5px; background-color: #333; border-radius: 50%;
+  top: 8px; left: 5px;
+  box-shadow: 5px 0 0 #333; /* Second eye */
+}
+
+
+/* Photo Icon: Rectangle with sun and mountain */
+.icon-photo {
+  width: 40px;
+  height: 30px;
+  background-color: #e0f2ff; /* Light sky blue background */
+  border: 2px solid #88aacc; /* Soft blue border */
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden; /* Keep pseudo-elements inside */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+/* Sun */
+.icon-photo::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ffeeaa; /* Pale yellow */
+  border-radius: 50%;
+  top: 5px;
+  right: 5px;
+  box-shadow: 0 0 3px #ffeeaa;
+}
+/* Mountain (simplified as two triangles) */
+.icon-photo::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 15px solid #a0c0a0; /* Greenish mountain */
+  bottom: 0px;
+  left: 2px;
+}
+/* Second mountain peak, slightly offset */
+/* This would ideally be another element or a more complex pseudo-element setup */
+/* For now, one peak is enough to convey the idea with one pseudo.
+   To add another, we'd need another actual element or get very creative with box-shadows
+   or borders on the existing pseudo-element, which is overly complex for this. */

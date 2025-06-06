@@ -1,10 +1,38 @@
 .ChannelView {
-  width: 80%;
-  height: 70%;
-  background-color: #dddddd;
-  border: 1px dashed #aaa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
+  grid-gap: 20px; /* Spacing between channel boxes */
+  padding: 20px; /* Padding around the grid container */
+  margin: 20px auto; /* Center the grid on the page if it's narrower than the viewport */
+  max-width: 700px; /* Max width of the channel grid, adjust as needed */
+  /* background-color: #eeeeee; */ /* Optional: background for the view itself */
+  /* border-radius: 5px; */
+  box-sizing: border-box;
+  /* Ensure it doesn't overlap SystemBar, assuming SystemBar is about 50-60px high */
+  /* Adjust height or use flex-grow in a parent container if this view is part of a larger layout */
+  height: calc(100vh - 100px); /* Example: full viewport height minus system bar and some margin */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Responsive adjustments: if screen is too narrow, switch to 2 columns */
+@media (max-width: 600px) {
+  .ChannelView {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    padding: 15px;
+    max-width: 350px; /* Adjust max-width for 2 columns */
+  }
+
+  /* Adjust ChannelBox size for smaller screens if necessary */
+  /* .ChannelBox {
+    width: 120px;
+    height: 80px;
+  } */
+}
+
+@media (max-width: 400px) {
+  .ChannelView {
+    grid-template-columns: repeat(1, 1fr); /* Single column on very small screens */
+    max-width: 200px; /* Adjust max-width for 1 column */
+  }
 }

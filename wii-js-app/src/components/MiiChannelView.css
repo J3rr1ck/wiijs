@@ -1,0 +1,48 @@
+.MiiChannelView {
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.85); /* Similar to ChannelBox but could be distinct */
+  border-radius: 10px;
+  margin: 20px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  height: calc(100vh - 100px); /* Example height, assuming SystemBar is present */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.MiiChannelView h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #007bff; /* Wii-like blue for titles */
+}
+
+.MiiChannelView p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.mii-back-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #007bff; /* Blue button */
+  border: none;
+  border-radius: 20px; /* Rounded button */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.mii-back-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-1px); /* Slight lift on hover */
+}
+
+.mii-back-button:active {
+  transform: translateY(0px); /* Button press effect */
+  background-color: #004085;
+}

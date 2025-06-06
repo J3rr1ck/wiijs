@@ -1,12 +1,19 @@
+/*
+  Future enhancements for WiiMenu background:
+  - Subtle animated elements (e.g., floating dots/particles).
+  - Daily messages or other dynamic elements.
+  - Potentially a 3D perspective effect if WebGL were used.
+*/
 .WiiMenu {
-  /* Basic styling for WiiMenu, e.g., full screen or specific dimensions */
-  width: 100vw;
-  height: 100vh;
-  background-color: #eeeeee; /* Light grey, distinct from body */
+  min-height: 100vh; /* Ensure it covers full viewport height */
+  width: 100%;      /* Ensure it covers full viewport width */
+  /* background-color: #f8f8f8; /* A very light grey / off-white */
+  background-image: linear-gradient(to bottom, #f0f0f0, #e0e0e0); /* Subtle gradient */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ccc;
+  /* align-items: center; */ /* Removed: Let children align themselves or use specific containers */
+  /* justify-content: flex-start; */ /* Removed: Let children flow naturally or manage their own spacing */
   box-sizing: border-box;
+  overflow: hidden; /* Prevent scrollbars from cursor or slight overflows */
+  position: relative; /* Important for absolute positioning of children like Cursor */
 }

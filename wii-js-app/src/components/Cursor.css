@@ -1,9 +1,47 @@
+/*
+  Ideal solution: Use an SVG or PNG image asset for the Wii hand pointer for visual accuracy.
+  e.g., background-image: url('/path/to/wii-hand-pointer.svg');
+*/
 .Cursor {
-  width: 20px;
-  height: 20px;
-  background-color: blue; /* Placeholder style */
-  border-radius: 50%;
-  position: absolute; /* Crucial for positioning with left/top */
-  pointer-events: none; /* So the cursor doesn't block mouse events on elements underneath */
-  /* transform: translate(-50%, -50%); /* Optional: to center cursor on mouse tip */
+  width: 30px; /* Approximate width of the Wii hand pointer */
+  height: 45px; /* Approximate height of the Wii hand pointer */
+  position: absolute;
+  pointer-events: none; /* Allows clicks/hovers to pass through */
+  z-index: 1000; /* Ensure it's above other UI elements */
+  /* The following is an attempt at a CSS-only Wii hand pointer */
+  background-color: white;
+  border: 2px solid #333; /* Dark border */
+  border-radius: 15px 15px 5px 5px / 20px 20px 5px 5px; /* Rounded top, flatter bottom for palm */
+  transform-origin: bottom center; /* Helps if we were to add pointing animation */
 }
+
+/* Simulating the pointing finger part of the hand */
+.Cursor::before {
+  content: '';
+  position: absolute;
+  width: 10px; /* Finger width */
+  height: 20px; /* Finger length */
+  background-color: white;
+  border: 2px solid #333;
+  border-bottom: none; /* Finger is open at the bottom where it connects to palm */
+  border-radius: 10px 10px 0 0; /* Rounded fingertip */
+  top: -18px; /* Position above the palm */
+  left: 50%;
+  transform: translateX(-50%); /* Center the finger */
+}
+
+/* Optional: A small blue circle at the base, like some Wii pointer versions */
+/* This is tricky to get right with the main shape and might be better as part of an image */
+/*
+.Cursor::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 50%;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+*/

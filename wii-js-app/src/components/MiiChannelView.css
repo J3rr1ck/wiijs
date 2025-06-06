@@ -3,10 +3,7 @@
   /* Assuming WiiMenu provides the context for height (e.g., it's a flex child or has explicit height) */
   /* For now, let's ensure it fills available vertical space if WiiMenu is flex container */
   flex-grow: 1;
-  /* Or, if WiiMenu isn't flex, a specific height like:
-     height: calc(100vh - 40px); /* Assuming 40px is SystemBar height */
-  */
-  background-color: #d0e8f0; /* Cheerful, light sky blue */
+  background-color: #d0e8f0;
   padding: 30px;
   display: flex;
   flex-direction: column;
